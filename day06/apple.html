@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apple</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+            box-sizing: border-box;
+        }
+        header {
+            width: 100%;
+            height: 44px;
+            background-color: #333;
+            padding: 0 185px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+        .lis {
+            display: none;
+        }
+        /*!*大屏*!*/
+        /*@media screen and (max-width: 1200px) {*/
+
+        /*}*/
+        /*中屏*/
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 0 16px;
+            }
+            .lis {
+                display: block;
+            }
+            .text {
+                display: none;
+            }
+        }
+        /*小屏*/
+        @media screen and (max-width: 375px){
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<header>
+    <div class="list lis">=</div>
+    <div class="list first">apple1</div>
+    <div class="list text">apple2</div>
+    <div class="list text">apple3</div>
+    <div class="list text">apple4</div>
+    <div class="list text">apple5</div>
+    <div class="list text">apple6</div>
+    <div class="list text">apple7</div>
+    <div class="list text">apple8</div>
+    <div class="list last">apple9</div>
+</header>
+
+</body>
+
+
+
+</html>

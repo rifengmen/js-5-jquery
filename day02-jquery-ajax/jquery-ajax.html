@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+
+
+
+</head>
+<body>
+
+1.AJAX:Asynchronous Javascript And XML -- 异步JavaScript和XML
+不是某一种编程语言，而是一种数据交互的技术。局部刷新，无需加载整个页面
+前台页面 <---> 后台服务器 --- 搭建桥梁
+
+
+2.同步和异步
+同步：浏览器在发送完请求后处于等待状态，等待服务器响应
+异步：不需要等待，效率高
+
+
+3.http请求
+http:计算机通过网络进行通信的协议（规则）/无状态的协议
+客户端 ---> 服务器
+步骤：
+1）.连接TCP
+2）.浏览器向服务器发送请求
+3）.浏览器向服务器发送请求头信息
+4）.服务器响应
+5）.服务器发送响应头信息
+6）.关闭TCP连接
+
+请求：
+1）.请求的方法：GET/POST
+2）.请求的URL信息
+3）.请求头（客户端环境、身份验证）
+4）.请求体（请求的一些正文、客户端提交的查询字符信息、表单信息）
+
+GET：用于信息获取，使用URL传递参数
+     不安全，数据量受限制（2KB）
+
+POST：对服务器信息进行修改
+      安全，对发送的数据大小不受限
+
+响应：
+1）.一个数字或者文字组成的状态码，用来表示请求成功或者失败
+2）.响应头（服务器类型、日期时间、内容类型）
+3）.响应体（响应正文）
+
+状态码：（三个数字，第一个数字代表状态码类型）
+1XX：信息类，表示收到浏览器的请求，正在处理
+2XX：成功，用户信息被正确接收
+3XX：重定向，表示请求没有成功
+4XX：客户端信息，404 not found - 地址错误
+5XX：服务器错误，500/505 服务器不能完成请求
+
+</body>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script>
+
+    // // AJAX
+    // // 1.创建ajax对象/XMLHttpRequest() -- XHR
+    // let xhr = new XMLHttpRequest();
+    // // 2.发送请求
+    // // open("请求方式：POST/GET","请求的地址"，是否异步：true（异步）/false（同步）)
+    // xhr.open("POST","url",true);
+    // // GET方式数据直接拼接在url后面
+    // // POST方式时要进行数据发送，在发送之前要设置请求头部数据类型
+    // xhr.setRequestHeader("Content-type","applicstion/x-www-form-urlencode");
+    // xhr.send("string");
+    // // 3.取得响应
+    // // resdyState 0 -- 请求未初始化，open未调用
+    // //            1 -- 服务器连接已经建立，open已调用
+    // //            2 -- 请求已接受，接受到请求头部信息
+    // //            3 -- 请求处理中，收到响应主体
+    // //            4 -- 请求已经完成，响应已经完成
+    // xhr.onreadystatechange = function () {
+    //     if (xhr.readyState === 4) {
+    //         if (xhr.status === 200) {
+    //             console.log("请求成功");
+    //             // xhr.responseXML请求成功之后处理数据
+    //         }
+    //     }
+    // };
+
+    let citys;
+    $.ajax({
+        type:"get",
+        url:"https://www.toutiao.com/stream/widget/local_weather/city/",
+        dataType:"Jsonp",
+        success:function (obj) {
+            citys = obj.data;
+            for (let i in citys) {
+                console.log(citys[i]);
+            }
+        }
+    })
+
+    // 如果要处理$.ajax()得到的数据，则需要使用回调函数。beforeSend、error、dataFilter、success、complete。
+    // beforeSend 在发送请求之前调用，并且传入一个XMLHttpRequest作为参数。
+    // error 在请求出错时调用。传入XMLHttpRequest对象，描述错误类型的字符串以及一个异常对象（如果有的话）
+    // dataFilter 在请求成功之后调用。传入返回的数据以及"dataType"参数的值。并且必须返回新的数据（可能是处理过的）传递给success回调函数。
+    // success 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。
+    // complete 当请求完成之后调用这个函数，无论成功或失败。传入XMLHttpRequest对象，以及一个包含成功或错误代码的字符串。
+
+
+
+</script>
+
+
+
+</html>
+
+

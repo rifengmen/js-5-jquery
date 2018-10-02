@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3d</title>
+</head>
+<style type="text/css">
+	* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.container {
+		width: 200px;
+		height: 200px;
+		margin: 200px auto;
+	}
+	.rect_wrapper {
+		position: relative;
+		perspective: 500px;
+	}
+	.content {
+		width: 200px;
+		height: 200px;
+		transform-style: preserve-3d;
+		animation: run 10s infinite;
+	}
+	.content div {
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		font-size: 32px;
+		text-align: center;
+		line-height: 200px;
+		font-weight: bold;
+	}
+	.top {
+		top: -100px;
+		transform: rotateX(90deg);
+		background-color: rgba(255,62,26,0.5);
+	}
+	.bottom {
+		top: 100px;
+		transform: rotateX(-90deg);
+		background-color: rgba(25,36,251,0.5);
+	}
+	.left {
+		left: -100px;
+		transform: rotateY(-90deg);
+		background-color: rgba(25,62,75,0.5);
+	}
+	.right {
+		left: 100px;
+		transform: rotateY(90deg);
+		background-color: rgba(14,36,95,0.5);
+	}
+	.front {
+		transform: translateZ(100px);
+		background-color: rgba(36,85,75,0.5);
+	}
+	.back {
+		transform: translateZ(-100px) rotateY(180deg);
+		background-color: rgba(36,255,1,0.5);
+	}
+	@keyframes run {
+		0%{
+			transform: rotateY(0);
+		}
+		10%{
+			transform: rotateY(180deg);
+		}
+		20%{
+			transform: rotateY(180deg) rotateX(180deg);
+		}
+		30%{
+			transform :translateX(180px) rotateZ(360deg);
+		}
+	}
+</style>
+<body>
+	<div class="container">
+		<div class="rect_wrapper">
+			<div class="content">
+				<div class="top">top</div>
+				<div class="bottom">bottom</div>
+				<div class="left">left</div>
+				<div class="right">right</div>
+				<div class="front">front</div>
+				<div class="back">back</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

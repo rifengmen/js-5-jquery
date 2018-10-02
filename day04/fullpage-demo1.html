@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fullpage-demo1</title>
+    <link rel="stylesheet" href="./css/jquery.fullPage.css">
+    <style>
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            list-style: none;
+        }
+        ul li {
+            float: left;
+            color: #fff;
+            font-size: 30px;
+            width: 250px;
+            height: 50px;
+            background: #2a333c;
+            margin-left: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--1.是什么-->
+    <!--fullpage是一个基于jquery的插件，它能够很方便、轻松的制作出全屏网站-->
+<!--2.功能-->
+    <!--支持鼠标滚动-->
+    <!--支持前进后退和键盘控制、-->
+    <!--多个回调函数、-->
+    <!--支持手机、平板触摸事件、-->
+    <!--支持css3动画、-->
+    <!--支持窗口缩放、-->
+    <!--窗口缩放时自动调整，可设置滚动宽度、背景颜色、滚动速度、循环选项、回调、文本对齐方式等等-->
+<!--3.下载-->
+    <!--1）官网直接下载-->
+    <!--2）github-->
+    <!--3）canjs在线-->
+<!--4.页面结构-->
+<!--5.配置项  属性方法-->
+
+<div id="dowebok">
+    <ul id="myMenu">
+        <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First section</a></li>
+        <li data-menuanchor="secondPage"><a href="#secondPage">Second section</a></li>
+        <li data-menuanchor="thirdPage"><a href="#thirdPage">Third section</a></li>
+        <li data-menuanchor="fourthPage"><a href="#fourthPage">Fourth section</a></li>
+    </ul>
+    <div class="section active" style="background: red; font-size: 800px; text-align: center;">1</div>
+    <div class="section" style="background: yellow; font-size: 800px; text-align: center;">
+        <div class="slide" style="background: #2C8DFB; font-size: 200px; text-align: center;"> Slide 1 </div>
+        <div class="slide" style="background: #3ee3fd; font-size: 200px; text-align: center;"> Slide 2 </div>
+        <div class="slide" style="background: #003eff; font-size: 200px; text-align: center;"> Slide 3 </div>
+        <div class="slide" style="background: #3cbeff; font-size: 200px; text-align: center;"> Slide 4 </div>
+    </div>
+    <div class="section" style="background: #2a333c; font-size: 800px; text-align: center;">3</div>
+    <div class="section" style="background: #8f8f8f; font-size: 800px; text-align: center;">4</div>
+</div>
+
+</body>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./js/jquery.easing.min.js"></script>
+<script src="./js/jquery.fullPage.min.js"></script>
+<script>
+    // 初始化fullpage插件
+    $(document).ready(function() {
+        $('#dowebok').fullpage({
+
+            // 锚链接
+            anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage', 'lastPage'],
+            // 菜单
+            menu: '#myMenu',
+
+
+
+            //Navigation
+            menu: true,//绑定菜单，设定的相关属性与anchors的值对应后，菜单可以控制滚动，默认为false。
+            // anchors:['firstPage', 'secondPage'],//anchors定义锚链接，默认为[]
+            // lockAnchors: false,//是否锁定锚链接，默认为false,设为true后链接地址不会改变
+            navigation: true,//默认值：false，如果设置为true，那他将会显示一个小圆圈组成的快速导航栏。
+            navigationPosition: 'left',//默认值：none，结合参数navigation一起使用，用于设置navigation定义的菜单显示的位置，可以设置为left/right。
+            navigationTooltips: ['firstSlide', 'secondSlide','3','4'],//默认值：[]，定义当navigation设置为true的时候，鼠标移动到快速导航上面的提示文本，每个属性中间用英文半角逗号（,）隔开。
+            showActiveTooltip: true,//默认值：false，设置是否自动显示navigationTooltips中设置的工具提示文本。
+            slidesNavigation: true,//默认值：false，使用方法同navigation，不过这个参数设置的导航显示位置不同，而且这个是用户设置幻灯片的。
+            slidesNavPosition: 'bottom',//默认值：bottom，定义slidesNavigation中设置的导航菜单显示的位置，可选的设置值为top/bottom，你可能要修改CSS样式确定的距离从顶部或底部以及任何其他风格如颜色。
+            //
+            // //Scrolling
+            // css3: true,//是否使用CSS3 transforms来实现滚动效果，默认为true
+            scrollingSpeed: 1000,//设置滚动速度，单位毫秒，默认700
+            // autoScrolling: true,//是否使用插件的滚动方式，默认为true,若为false则会出现浏览器自带滚动条
+            // fitToSection: true,//设置是否自适应整个窗口的空间，默认值：true
+            // scrollBar: false,//是否包含滚动条，默认为false,若为true浏览器自带滚动条出现
+            // easing: 'easeInOutCubic',//定义页面section滚动的动画方式，若修改此项需引入jquery.easing插件
+            // easingcss3: 'ease',//定义页面section滚动的过渡效果，若修改此项需引入第三方插件
+            loopBottom: true,//滚动到最低部后是否连续滚动到顶部，默认为false
+            loopTop: true,//滚动到最顶部后是否连续滚动到底部，默认为false
+            // loopHorizontal: true,//横向slide幻灯片是否循环滚动，默认为true
+            // continuousVertical: false,//是否循环滚动，不兼容loopTop和loopBottom选项
+            // normalScrollElements: '#element1, .element2',//避免自动滚动，滚动时的一些元素，例如百度地图
+            // scrollOverflow: false,//内容超过满屏后是否显示滚动条，true则显示滚动条，若需滚动查看内容还需要jquery.slimscroll插件的配合
+            // touchSensitivity: 15,//在移动设备中滑动页面的敏感性，默认为5最高100，越大越难滑动
+            // normalScrollElementTouchThreshold: 5,
+            //
+            // //Accessibility
+            // keyboardScrolling: true,//是否可以使用键盘方向键导航，默认为true
+            // animateAnchor: true,//锚链接是否可以控制滚动动画，默认为true,若为false则锚链接定位失效
+            // recordHistory: true,//是否记录历史，默认为true,浏览器的前进后退可导航。若autoScrolling:false,那么这个属性将被关闭
+            //
+            // //Design
+            // controlArrows: true,//定义是否通过箭头来控制slide,默认true
+            // verticalCentered: true,//定义每一页的内容是否垂直居中，默认true
+            // resize : false,//字体是否随窗口缩放而缩放，默认false
+            // sectionsColor : ['#ccc', '#fff'],//为每个section设置background-color属性
+            // paddingTop: '3em',//设置每一个section顶部的padding,默认为0
+            // paddingBottom: '10px',//设置每一个section底部的padding,默认为0
+            // fixedElements: '#header, .footer',//固定元素，默认为null,需要配置一个jquery选择器，在页面滚动时，fixElements设置的元素不滚动
+            // responsiveWidth: 0,
+            // responsiveHeight: 0,
+            //
+            // //Custom selectors
+            // sectionSelector: '.section',//section选择器。默认为.section
+            // slideSelector: '.slide',//slide选择器，默认为.slide
+            //
+            // //events
+            // onLeave: function(index, nextIndex, direction){},
+            // afterLoad: function(anchorLink, index){},
+            // afterRender: function(){},
+            // afterResize: function(){},
+            // afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+            // onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+
+        });
+    });
+
+
+</script>
+
+</html>
+

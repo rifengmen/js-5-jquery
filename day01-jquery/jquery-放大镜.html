@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .box1 {
+            width: 300px;
+            height: 300px;
+            border:1px solid #000;
+            float: left;
+            margin: 100px 20px 0 50px;
+            position: relative;
+        }
+        .opcity {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(0,0,0,0.3);
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .pointer {
+            width: 100px;
+            height: 100px;
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: move;
+            display: none;
+        }
+        .box2 {
+            width: 300px;
+            height: 300px;
+            border:1px solid #000;
+            float: left;
+            margin: 100px 0 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .box2 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="box1">
+    <div class="opcity"></div>
+    <img src="./img/IMG_6714.JPG" alt="">
+    <div class="pointer"></div>
+</div>
+<div class="box2">
+    <img src="./img/IMG_6714.JPG" alt="">
+</div>
+
+</body>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script>
+
+    $(".box1").mouseover(function () {
+        $(".pointer").show();
+    });
+    $(".box1").mouseout(function () {
+        $(".pointer").hide();
+    });
+    let maxwidth = $(".box1").innerWidth()-$(".pointer").outerWidth();
+    let maxheight = $(".box1").innerHeight()-$(".pointer").outerHeight();
+    // $(".box1").mousedown(function (e) {
+    //     let oldx = e.offsetX;
+    //     let oldy = e.offsetY;
+    //     $(".box1").on("mousemove",function (event) {
+    //         let newx = event.offsetX;
+    //         let newY = event.offsetY;
+    //         let nx = newx - oldx;
+    //         let ny = newY - oldy;
+    //         if (nx > maxwidth) {
+    //             nx = maxwidth;
+    //         };
+    //         if (nx < 0) {
+    //             nx = 0;
+    //         };
+    //         if (ny > maxheight) {
+    //             ny = maxheight;
+    //         };
+    //         if (ny < 0) {
+    //             ny = 0;
+    //         };
+    //         // 右侧图片方法和位置移动
+    //         let scales = 5;
+    //         let widths = $(".box2").outerWidth();
+    //         let heights = $(".box2").outerHeight();
+    //         $(".pointer").css({"left":nx,"top":ny});
+    //         $(".box2 img").css({"width":scales*widths,"height":scales*heights,"left":-scales*nx,"top":-scales*ny});
+    //     })
+    // });
+    // $(".box1").mouseup(function () {
+    //     $(".box1").off("mousemove");
+    // })
+    $(".box1").on("mousemove",function (event) {
+        let newx = event.offsetX;
+        let newY = event.offsetY;
+        let nx = newx - 50;
+        let ny = newY - 50;
+        if (nx > maxwidth) {
+            nx = maxwidth;
+        };
+        if (nx < 0) {
+            nx = 0;
+        };
+        if (ny > maxheight) {
+            ny = maxheight;
+        };
+        if (ny < 0) {
+            ny = 0;
+        };
+        // 右侧图片方法和位置移动
+        let scales = 5;
+        let widths = $(".box2").outerWidth();
+        let heights = $(".box2").outerHeight();
+        $(".pointer").css({"left":nx,"top":ny});
+        $(".box2 img").css({"width":scales*widths,"height":scales*heights,"left":-scales*nx,"top":-scales*ny});
+    })
+
+</script>
+
+</html>

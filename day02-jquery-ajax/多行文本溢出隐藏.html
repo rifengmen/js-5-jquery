@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多行文本溢出隐藏</title>
+
+    <style>
+
+        p {
+            width: 300px;
+            color: red;
+            /*非中日韩文本换行*/
+            word-break: break-all;
+            /*让元素在弹性盒子中显示*/
+            display: -webkit-box;
+            /*显示排列方式 --- 垂直*/
+            -webkit-box-orient: vertical;
+            /*显示行数*/
+            -webkit-line-clamp: 3;
+            /*超出部分隐藏*/
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+
+<p>wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww</p>
+
+
+</body>
+</html>
